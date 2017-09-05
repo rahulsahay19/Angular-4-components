@@ -1,0 +1,12 @@
+<h2>Total no of Movies:- {{moviesColl.length}} </h2>
+<div class="container">
+  <div class="row>" *ngFor="let movie of moviesColl">
+    <h4>Movie Name:- {{movie.name}} ,Director:- {{movie.directorName}}, Release Year:-{{movie.releaseYear}} </h4>
+  </div>
+</div>
+
+<hr>
+<h3>Total Reviews: </h3>
+
+<app-reviews *ngFor="let item of reviewsColl" [review]="item">
+</app-reviews>
