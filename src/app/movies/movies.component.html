@@ -1,12 +1,36 @@
-<h2>Total no of Movies:- {{moviesColl.length}} </h2>
+
 <div class="container">
+    <h2>Total no of Movies:- {{moviesColl.length}} </h2>
   <div class="row>" *ngFor="let movie of moviesColl">
     <h4>Movie Name:- {{movie.name}} ,Director:- {{movie.directorName}}, Release Year:-{{movie.releaseYear}} </h4>
   </div>
+
+
+  <hr>
+  <h3>Total Reviews: </h3>
+  <div class="row">
+    <app-reviews *ngFor="let item of reviewsColl" [reviews]="item">
+    </app-reviews>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Add New Movie!</p>
+      <label>Movie Name</label>
+      <input type="text" class="form-control" [(ngModel)]="newMovieName">
+      <label>Director Name</label>
+      <input type="text" class="form-control" [(ngModel)]="newDirectorName">
+      <label>Release Year</label>
+      <input type="text" class="form-control" [(ngModel)]="newReleaseYear">
+      <label>Reviewer Name</label>
+      <input type="text" class="form-control" [(ngModel)]="newReviewerName">
+      <label>Comment</label>
+      <input type="text" class="form-control" [(ngModel)]="newComment">
+      <br>
+      <button class="btn btn-primary" (click)="onAddMovie()" >Add Movie</button>
+      <button class="btn btn-primary" (click)="onAddMovieReview()">Add Movie Review</button>
+    </div>
+  </div>
 </div>
-
-<hr>
-<h3>Total Reviews: </h3>
-
-<app-reviews *ngFor="let item of reviewsColl" [review]="item">
-</app-reviews>

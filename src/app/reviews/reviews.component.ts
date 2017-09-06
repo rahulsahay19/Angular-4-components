@@ -7,7 +7,7 @@ import { Review,REVIEWS } from '../Models/Review';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
- @Input() review:Review;
+ @Input('reviews') review:Review;
 
   constructor() { }
 
