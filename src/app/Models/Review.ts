@@ -6,6 +6,6 @@ export class Review {
 
 export const REVIEWS = [
   {reviewer: 'Rahul', comments:'Awesome Movie!'},
-  {reviewer: 'Rohit', comments:'OK!'},
-  {reviewer: 'Mohit', comments:'Not so great!'},
+  // {reviewer: 'Rohit', comments:'OK!'},
+  // {reviewer: 'Mohit', comments:'Not so great!'},
 ];

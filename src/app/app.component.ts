@@ -1,5 +1,5 @@
 import {
-  Component
+  Component, OnInit
 } from '@angular/core';
 import {
   Movie
@@ -13,7 +13,14 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor(){
+ //   console.log("Constructor Called!")
+  }
+  ngOnInit() {
+   // console.log("ngOnInit Called!")
+  }
   title = 'app';
   moviesArray;
   reviewsArray;
