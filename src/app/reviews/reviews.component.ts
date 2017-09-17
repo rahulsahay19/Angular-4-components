@@ -12,11 +12,13 @@ import {
    OnDestroy
    } from '@angular/core';
 import { Review,REVIEWS } from '../Models/Review';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.css']
+  styleUrls: ['./reviews.component.css'],
+  providers:[LoggingService]
 })
 export class ReviewsComponent implements 
 OnInit, 
@@ -30,39 +32,39 @@ OnDestroy {
  
   @Input('reviews') review: Review;
 
-  constructor() {
-    console.log("Contstructor Called!")
+  constructor(private loggingService:LoggingService) {
+
+    this.loggingService.logToConsole("Contstructor Called!");
   }
 
   ngOnInit() {
-    console.log("ngOnInit Called!")
-  }
+    this.loggingService.logToConsole("ngOnInit Called!");
+    }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("onChanges Called!");
-    console.log(changes);
+    this.loggingService.logToConsole("onChanges Called!");
   }
   ngDoCheck() {
-    console.log("ngDoCheck Called!")
+    this.loggingService.logToConsole("ngDoCheck Called!")
   }
 
   ngAfterContentInit(){
-    console.log("ngAfterContentInit Called!")
+    this.loggingService.logToConsole("ngAfterContentInit Called!")
   }
    
   ngAfterContentChecked() {
-    console.log("ngAfterContentChecked Called!")
+    this.loggingService.logToConsole("ngAfterContentChecked Called!")
   }
   ngAfterViewInit() {
-    console.log("ngAfterViewInit Called!");
+    this.loggingService.logToConsole("ngAfterViewInit Called!");
   }
 
   ngAfterViewChecked() {
-    console.log("ngAfterViewChecked Called!");
+    this.loggingService.logToConsole("ngAfterViewChecked Called!");
   }
  
   ngOnDestroy(): void {
-   console.log("ngOnDestroy Called!")
+    this.loggingService.logToConsole("ngOnDestroy Called!")
   }
 
 }

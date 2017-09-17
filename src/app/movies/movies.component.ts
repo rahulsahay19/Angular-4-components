@@ -10,21 +10,17 @@ import {
   OnDestroy,
 } from '@angular/core';
 
-import {
-  Movie,
-  MOVIES
-} from '../Models/Movie';
-import {
-  Review,
-  REVIEWS
-} from '../Models/Review';
+import { Movie,  MOVIES } from '../Models/Movie';
+import { Review, REVIEWS } from '../Models/Review';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
-
+  styleUrls: ['./movies.component.css'],
+  providers:[LoggingService]
 })
+
 export class MoviesComponent implements OnInit, OnDestroy {
 
   moviesColl = MOVIES;
@@ -39,33 +35,28 @@ export class MoviesComponent implements OnInit, OnDestroy {
   newReviewerName = '';
   newComment = '';
 
+  oddReviews =[1,3,5];
+  evenNumbers=[2,4,6];
+  onlyOdd=false;
+
   @Output() movieCreated = new EventEmitter < Movie[] > ();
   @Output() reviewCreated = new EventEmitter < Review[] > ();
 
   @ViewChild('movieNameInput') movieNameInput: ElementRef;
-  constructor() {
- //   console.log("Contstructor Called!")
-  }
+  constructor(private loggingService:LoggingService) {}
 
 
   ngOnInit() {
-   // console.log("ngOnInit Called!")
-  }
+   }
 
-//  ngDoCheck(){
-//   console.log("ngDoCheck called!")
-//  }
+
   onAddMovie(movieInput) {
-    //console.log("Teamplate Reference:-",movieInput.value);
-    // console.log(this.movieNameInput.nativeElement.value);
-    //this.movieNameInput.nativeElement.value='Titanic';
     this.movies.push({
       name: this.newMovieName,
       directorName: this.newDirectorName,
       releaseYear: this.newReleaseYear
     });
     this.movieCreated.emit(this.movies);
-    //console.log("Movie Added",this.movies);
   }
 
   onAddMovieReview() {
@@ -74,14 +65,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
       comments: this.newComment
     });
     this.reviewCreated.emit(this.reviews);
-    //console.log("Movie Review Added",this.reviews);
   }
 
   ngOnDestroy(){
-   console.log("ngOnDestroy Called!")
+    this.loggingService.logToConsole('ngOnDestroy called!');
   }
   removeComponent(){
-    console.log(this.reviewsColl);
     this.reviewsColl.splice(0,1);
   }
 }

@@ -5,7 +5,7 @@ export class Review {
 }
 
 export const REVIEWS = [
-  {reviewer: 'Rahul', comments:'Awesome Movie!'},
-  // {reviewer: 'Rohit', comments:'OK!'},
-  // {reviewer: 'Mohit', comments:'Not so great!'},
+  {id:1, reviewer: 'Rahul', comments:'Awesome Movie!'},
+  {id:2,reviewer: 'Rohit', comments:'OK!'},
+  {id:3,reviewer: 'Mohit', comments:'Not so great!'},
 ];
